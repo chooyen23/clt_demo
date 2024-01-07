@@ -4,9 +4,9 @@ import matplotlib.pyplot as plt
 
 st.title('Illustrating the Central Limit Theorem with Streamlit') 
 st.subheader('An App by Foo Choo Yen') 
-st.write('This app lets you visualize different distributions and their sample mean distributions.') 
+st.write('This app lets you visualize different distributions and explore their sample mean distributions.') 
 st.write('Select the Base Distribution and followed by indicating the sample size.')
-st.write('Play around with the sample size to see the changes of in the distribution of the Sample Means.') 
+st.write('Play around with the sample size to see the changes in the distribution of the Sample Means.') 
 # Dropdown for distribution selection
 distribution = st.selectbox(
     'Select Base Distribution',
