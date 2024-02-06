@@ -34,8 +34,7 @@ st.title('Histogram with Normal Distribution Curve')
 # Sidebar content
 st.sidebar.header("About")
 st.sidebar.info(
-    "This app lets you vary the population mean and population standard deviation."
-    "This helps to explore the characteristics of normal distribution."
+    "This app lets you vary the population mean and population standard deviation to  explore the characteristics of a normal distribution."
     "\n"
     "\nA project for learning statistics by Foo Choo Yen"
 )
