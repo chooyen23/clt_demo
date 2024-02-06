@@ -12,7 +12,8 @@ st.write('Play around with the sample size to see the changes in the distributio
 st.sidebar.header("About")
 st.sidebar.info(
     "This app lets you visualize different distributions and explore their sample mean distributions.\n"
-    "A project for learning statistics by Foo Choo Yen"
+    "\n"
+    "\nA project for learning statistics by Foo Choo Yen"
 )
 # Dropdown for distribution selection
 
