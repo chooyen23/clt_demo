@@ -32,18 +32,14 @@ def generate_base_distribution(distribution, num_values):
     elif distribution == 'Normal':
         mu, sigma = 50, 15  # Mean and standard deviation for normal
         return np.random.normal(mu, sigma, num_values)
-    elif distribution == 'bathtub':
-        # Range for x-values
-        x = np.linspace(30, 100, 400)
+    
+    elif distribution == 'Normal':
+        mu, sigma = 50, 15  # Mean and standard deviation for normal
+        return np.random.normal(mu, sigma, num_values)
 
-        # Parameters for the quadratic equation (U-shaped curve)
-        a = 0.1
-        h = 65  # vertex roughly in the middle of the range
-        k = 30
-
-        # Quadratic equation: y = a(x-h)^2 + k
-        y = a * (x - h)**2 + k
-        return y
+    elif distribution == 'Exponential':
+        a =2
+        return np.random.exponential( scale=a,size=num_values)
 
 def plot_distribution(data, title, bins=30, color='skyblue'):
     fig, ax = plt.subplots()
@@ -58,6 +54,7 @@ def plot_distribution(data, title, bins=30, color='skyblue'):
 
 def plot_sampling_distribution(data, title, bins=30, color='skyblue'):
     fig, ax = plt.subplots()
+    ax.set_title(title)
 
     # Plot histogram
     ax.hist(data, bins=bins, color=color, edgecolor='black',density=False)
@@ -80,7 +77,7 @@ def plot_sampling_distribution(data, title, bins=30, color='skyblue'):
 st.title('Distribution Visualization')
 
 # Dropdown for distribution selection
-distribution = st.selectbox('Select Base Distribution', ['Uniform', 'Right Skewed', 'Left Skewed','Triangular', 'Normal','bathtub'],
+distribution = st.selectbox('Select Base Distribution', ['Uniform', 'Right Skewed', 'Left Skewed','Triangular', 'Normal','Exponential'],
                             key='unique_distribution_select')
 
 # Parameters for generating distributions
@@ -92,7 +89,7 @@ fig = plot_distribution(base_dist, f'{distribution} Distribution')
 st.pyplot(fig)
 
 # User input for number of samples
-n_samples = st.slider('Number of samples drawn', min_value=1, max_value=1000, value=30, step=1)
+n_samples = st.slider('Sample size (n)', min_value=1, max_value=1000, value=30, step=1)
 
 # Generating sample means
 list_of_means = []
@@ -101,6 +98,9 @@ for i in range(500):
     list_of_means.append(sample_mean)
 #list_of_means = [np.random.choice(base_dist,replace=True).mean() for _ in range(n_samples)]
 
+mu_x_bar=np.mean(list_of_means)
+sigma_x_bar = np.std(list_of_means)
 # Plotting the histogram of sample means
-mean_fig = plot_sampling_distribution(list_of_means, 'Distribution of Sample Means', color='lightgreen')
-st.pyplot(mean_fig)
+title = f'Distribution of sample mean ($\mu_{{\\bar{{x}}}}$  = {mu_x_bar:0.2f}, $\sigma_{{\\bar{{x}}}}$ ={sigma_x_bar:0.2f} )'
+mean_fig = plot_sampling_distribution(list_of_means, title, color='lightgreen')
+st.pyplot(mean_fig,)
