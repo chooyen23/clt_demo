@@ -104,4 +104,4 @@ sigma_x_bar = np.std(list_of_means)
 # Plotting the histogram of sample means
 title = f'Distribution of sample mean ($\mu_{{\\bar{{x}}}}$  = {mu_x_bar:0.2f}, $\sigma_{{\\bar{{x}}}}$ ={sigma_x_bar:0.2f} )'
 mean_fig = plot_sampling_distribution(list_of_means, title, color='lightgreen')
-st.pyplot(mean_fig,)
+st.pyplot(mean_fig)
